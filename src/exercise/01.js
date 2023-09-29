@@ -2,7 +2,12 @@
 // http://localhost:3000/isolated/exercise/01.js
 
 import * as React from 'react'
-const Globe = React.lazy(() => import('../globe'))
+
+const loadGloabe = () => {
+  console.log('ok. looo')
+  return import('../globe')
+}
+const Globe = React.lazy(loadGloabe)
 
 function App() {
   const [showGlobe, setShowGlobe] = React.useState(false)
@@ -18,7 +23,7 @@ function App() {
         padding: '2rem',
       }}
     >
-      <label style={{marginBottom: '1rem'}}>
+      <label style={{marginBottom: '1rem'}} onMouseOver={loadGloabe}>
         <input
           type="checkbox"
           checked={showGlobe}
